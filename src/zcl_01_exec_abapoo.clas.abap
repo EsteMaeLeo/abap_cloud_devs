@@ -7,15 +7,53 @@ CLASS zcl_01_exec_abapoo DEFINITION
     INTERFACES if_oo_adt_classrun.
   PROTECTED SECTION.
   PRIVATE SECTION.
-  ENDCLASS.
+ENDCLASS.
 
 
 
-  CLASS zcl_01_exec_abapoo IMPLEMENTATION.
+CLASS zcl_01_exec_abapoo IMPLEMENTATION.
+
   METHOD if_oo_adt_classrun~main.
 
+*    data lo_contract type REF TO zcl_01_contract_oo.
+*
+*    create OBJECT lo_contract.
+*
+*    lo_contract = new #(  ).
+
+    DATA(lo_contract) = NEW zcl_01_contract_oo(  ).
+
+    DATA lv_process TYPE string.
+
+    IF lo_contract IS BOUND.
+
+      lo_contract->set_client(
+        EXPORTING
+          iv_client   = 'Walmart'
+          iv_location = space
+        IMPORTING
+          ev_status   = DATA(lv_status)
+        CHANGING
+          cv_process  = lv_process ).
+
+*          CALL METHOD lo_contract->set_client
+*            EXPORTING
+*              iv_client   =
+*              iv_location =
+**            IMPORTING
+**             ev_status   =
+*            CHANGING
+*              cv_process  =.
+
+      lo_contract->get_client( IMPORTING ev_client = DATA(lv_client) ).
+
+      lo_contract->region = 'EU'.
+
+    ENDIF.
+
     out->write( 'Hello Cloud Trial' ).
+    out->write( |{ lv_client }-{ lv_status }-{ lv_process }-{ lo_contract->region } | ).
 
   ENDMETHOD.
 
-  ENDCLASS.
+ENDCLASS.

@@ -5,6 +5,7 @@ CLASS zcl_01_contract_oo DEFINITION
 
   PUBLIC SECTION.
     CLASS-DATA currency TYPE c LENGTH 3.
+    DATA region TYPE string.
 
     METHODS set_client IMPORTING iv_client   TYPE string
                                  iv_location TYPE string
@@ -28,6 +29,8 @@ CLASS zcl_01_contract_oo IMPLEMENTATION.
   METHOD set_client.
 
     client = iv_client.
+    ev_status = 'OK'.
+    cv_process = 'STARTED'.
 
   ENDMETHOD.
 
