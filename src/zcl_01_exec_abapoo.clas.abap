@@ -51,8 +51,17 @@ CLASS zcl_01_exec_abapoo IMPLEMENTATION.
 
     ENDIF.
 
+    zcl_01_contract_oo=>set_cntr_type( iv_cntr_type = 'Construction' ).
+
+    zcl_01_contract_oo=>get_cntr_type(
+      IMPORTING
+        ev_cntr_type = data(lv_cntr_type)
+    ).
+
     out->write( 'Hello Cloud Trial' ).
     out->write( |{ lv_client }-{ lv_status }-{ lv_process }-{ lo_contract->region } | ).
+
+    out->write( lv_cntr_type ).
 
   ENDMETHOD.
 
