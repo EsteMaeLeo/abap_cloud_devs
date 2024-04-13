@@ -23,6 +23,8 @@ CLASS zcl_01_exec_abapoo IMPLEMENTATION.
 
     DATA(lo_contract) = NEW zcl_01_contract_oo(  ).
 
+    DATA(lo_contract2) = NEW zcl_01_contract_oo(  ).
+
     DATA lv_process TYPE string.
 
     IF lo_contract IS BOUND.
@@ -51,12 +53,18 @@ CLASS zcl_01_exec_abapoo IMPLEMENTATION.
 
     ENDIF.
 
-    zcl_01_contract_oo=>set_cntr_type( iv_cntr_type = 'Construction' ).
+    zcl_01_contract_oo=>set_cntr_type( 'Construction' ).
 
     zcl_01_contract_oo=>get_cntr_type(
       IMPORTING
         ev_cntr_type = data(lv_cntr_type)
     ).
+
+    zcl_01_contract_oo=>currency = 'USD'.
+
+    out->write( lo_contract->currency ).
+
+    out->write( lo_contract2->currency ).
 
     out->write( 'Hello Cloud Trial' ).
     out->write( |{ lv_client }-{ lv_status }-{ lv_process }-{ lo_contract->region } | ).
