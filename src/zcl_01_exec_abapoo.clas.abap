@@ -66,7 +66,7 @@ CLASS zcl_01_exec_abapoo IMPLEMENTATION.
 
     out->write( lo_contract2->currency ).
 
-    out->write( 'Hello Cloud Trial' ).
+    out->write( 'Class Cloud Trial' ).
     out->write( |{ lv_client }-{ lv_status }-{ lv_process }-{ lo_contract->region } | ).
 
     out->write( lv_cntr_type ).
