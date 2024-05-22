@@ -16,6 +16,11 @@ CLASS zcl_01_contract_oo DEFINITION
 
            tty_address TYPE TABLE OF ty_address.
 
+    CONSTANTS: BEGIN OF cs_currency,
+                 usd TYPE c LENGTH 3 VALUE 'USD',
+                 eur TYPE c LENGTH 3 VALUE 'EUR',
+               END OF cs_currency.
+
     CLASS-DATA currency TYPE c LENGTH 3.
     DATA region TYPE string.
 

@@ -74,6 +74,8 @@ CLASS ZCL_01_EXEC_ABAPOO IMPLEMENTATION.
 
     zcl_01_contract_oo=>currency = 'USD'.
 
+      zcl_01_contract_oo=>currency =  zcl_01_contract_oo=>cs_currency-eur.
+
     out->write( lo_contract->currency ).
 
     out->write( lo_contract2->currency ).
