@@ -4,6 +4,18 @@ CLASS zcl_01_contract_oo DEFINITION
   CREATE PUBLIC .
 
   PUBLIC SECTION.
+
+    TYPES: BEGIN OF ty_address,
+             country    TYPE string,
+             city       TYPE string,
+             posta_code TYPE string,
+             region     TYPE string,
+             street     TYPE string,
+             number     TYPE string,
+           END OF ty_address,
+
+           tty_address TYPE TABLE OF ty_address.
+
     CLASS-DATA currency TYPE c LENGTH 3.
     DATA region TYPE string.
 
@@ -19,6 +31,8 @@ CLASS zcl_01_contract_oo DEFINITION
 
     METHODS get_client_name IMPORTING iv_client_id     TYPE string
                             RETURNING VALUE(rv_client) TYPE string.
+
+    METHODS set_address IMPORTING it_address TYPE tty_address.
 
   PROTECTED SECTION.
     DATA creation_date TYPE sydate.
@@ -71,6 +85,10 @@ CLASS zcl_01_contract_oo IMPLEMENTATION.
       WHEN '02'.
         rv_client = 'Client Name 02'.
     ENDCASE.
+
+  ENDMETHOD.
+
+  METHOD set_address.
 
   ENDMETHOD.
 

@@ -28,6 +28,9 @@ CLASS ZCL_01_EXEC_ABAPOO IMPLEMENTATION.
 
     DATA lv_process TYPE string.
 
+    data: lt_address type zcl_01_contract_oo=>tty_address,
+          ls_address TYPE zcl_01_contract_oo=>ty_address.
+
     IF lo_contract IS BOUND.
 
       lo_contract->set_client(
