@@ -7,15 +7,19 @@ CLASS zcl_01_contract_oo DEFINITION
     CLASS-DATA currency TYPE c LENGTH 3.
     DATA region TYPE string.
 
-    METHODS set_client IMPORTING iv_client   TYPE string
-                                 iv_location TYPE string
-                       EXPORTING ev_status   TYPE string
-                       CHANGING  cv_process  TYPE string.
+    METHODS set_client IMPORTING VALUE(iv_client)   TYPE string
+                                 VALUE(iv_location) TYPE string
+                       EXPORTING VALUE(ev_status)   TYPE string
+                       CHANGING  VALUE(cv_process)  TYPE string.
 
     METHODS get_client EXPORTING ev_client TYPE string.
 
-    CLASS-METHODS: set_cntr_type IMPORTING iv_cntr_type TYPE string,
-      get_cntr_type EXPORTING ev_cntr_type TYPE string.
+    CLASS-METHODS set_cntr_type IMPORTING iv_cntr_type TYPE string.
+    CLASS-METHODS get_cntr_type EXPORTING ev_cntr_type TYPE string.
+
+    METHODS get_client_name IMPORTING iv_client_id     TYPE string
+                            RETURNING VALUE(rv_client) TYPE string.
+
   PROTECTED SECTION.
     DATA creation_date TYPE sydate.
 
@@ -25,7 +29,11 @@ CLASS zcl_01_contract_oo DEFINITION
 
 ENDCLASS.
 
+
+
 CLASS zcl_01_contract_oo IMPLEMENTATION.
+
+
   METHOD set_client.
 
     client = iv_client.
@@ -34,11 +42,13 @@ CLASS zcl_01_contract_oo IMPLEMENTATION.
 
   ENDMETHOD.
 
+
   METHOD get_client.
 
     ev_client = client.
 
   ENDMETHOD.
+
 
   METHOD get_cntr_type.
 
@@ -46,9 +56,21 @@ CLASS zcl_01_contract_oo IMPLEMENTATION.
 
   ENDMETHOD.
 
+
   METHOD set_cntr_type.
 
     cntr_type = iv_cntr_type.
+
+  ENDMETHOD.
+
+  METHOD get_client_name.
+
+    CASE iv_client_id.
+      WHEN '01'.
+        rv_client = 'Client Name 01'.
+      WHEN '02'.
+        rv_client = 'Client Name 02'.
+    ENDCASE.
 
   ENDMETHOD.
 

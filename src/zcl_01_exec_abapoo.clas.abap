@@ -11,7 +11,8 @@ ENDCLASS.
 
 
 
-CLASS zcl_01_exec_abapoo IMPLEMENTATION.
+CLASS ZCL_01_EXEC_ABAPOO IMPLEMENTATION.
+
 
   METHOD if_oo_adt_classrun~main.
 
@@ -51,6 +52,14 @@ CLASS zcl_01_exec_abapoo IMPLEMENTATION.
 
       lo_contract->region = 'EU'.
 
+      data(lv_client_name) = lo_contract->get_client_name( iv_client_id = '01' ).
+
+       out->write( |name: | && lv_client_name ).
+
+       if not lo_contract2->get_client_name( iv_client_id = '02' )  is INITIAL.
+         out->write( lo_contract2->get_client_name( iv_client_id = '02' ) ).
+       endif.
+
     ENDIF.
 
     zcl_01_contract_oo=>set_cntr_type( 'Construction' ).
@@ -72,5 +81,4 @@ CLASS zcl_01_exec_abapoo IMPLEMENTATION.
     out->write( lv_cntr_type ).
 
   ENDMETHOD.
-
 ENDCLASS.
