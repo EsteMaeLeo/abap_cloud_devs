@@ -11,7 +11,7 @@ ENDCLASS.
 
 
 
-CLASS ZCL_01_EXEC_ABAPOO IMPLEMENTATION.
+CLASS zcl_01_exec_abapoo IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.
@@ -28,7 +28,7 @@ CLASS ZCL_01_EXEC_ABAPOO IMPLEMENTATION.
 
     DATA lv_process TYPE string.
 
-    data: lt_address type zcl_01_contract_oo=>tty_address,
+    DATA: lt_address TYPE zcl_01_contract_oo=>tty_address,
           ls_address TYPE zcl_01_contract_oo=>ty_address.
 
     IF lo_contract IS BOUND.
@@ -55,13 +55,13 @@ CLASS ZCL_01_EXEC_ABAPOO IMPLEMENTATION.
 
       lo_contract->region = 'EU'.
 
-      data(lv_client_name) = lo_contract->get_client_name( iv_client_id = '01' ).
+      DATA(lv_client_name) = lo_contract->get_client_name( iv_client_id = '01' ).
 
-       out->write( |name: | && lv_client_name ).
+      out->write( |name: | && lv_client_name ).
 
-       if not lo_contract2->get_client_name( iv_client_id = '02' )  is INITIAL.
-         out->write( lo_contract2->get_client_name( iv_client_id = '02' ) ).
-       endif.
+      IF NOT lo_contract2->get_client_name( iv_client_id = '02' )  IS INITIAL.
+        out->write( lo_contract2->get_client_name( iv_client_id = '02' ) ).
+      ENDIF.
 
     ENDIF.
 
@@ -69,12 +69,12 @@ CLASS ZCL_01_EXEC_ABAPOO IMPLEMENTATION.
 
     zcl_01_contract_oo=>get_cntr_type(
       IMPORTING
-        ev_cntr_type = data(lv_cntr_type)
+        ev_cntr_type = DATA(lv_cntr_type)
     ).
 
     zcl_01_contract_oo=>currency = 'USD'.
 
-      zcl_01_contract_oo=>currency =  zcl_01_contract_oo=>cs_currency-eur.
+    zcl_01_contract_oo=>currency =  zcl_01_contract_oo=>cs_currency-eur.
 
     out->write( lo_contract->currency ).
 
@@ -84,6 +84,8 @@ CLASS ZCL_01_EXEC_ABAPOO IMPLEMENTATION.
     out->write( |{ lv_client }-{ lv_status }-{ lv_process }-{ lo_contract->region } | ).
 
     out->write( lv_cntr_type ).
+
+    out->write( zcl_01_contract_oo=>company ).
 
   ENDMETHOD.
 ENDCLASS.

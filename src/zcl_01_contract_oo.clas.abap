@@ -39,12 +39,18 @@ CLASS zcl_01_contract_oo DEFINITION
 
     METHODS set_address IMPORTING it_address TYPE tty_address.
 
+    CLASS-DATA company TYPE string READ-ONLY.
+
+    METHODS set_sales_org IMPORTING sales_org TYPE string.
+    METHODS get_sales_org EXPORTING sales_org TYPE string.
+
   PROTECTED SECTION.
     DATA creation_date TYPE sydate.
 
   PRIVATE SECTION.
     DATA client TYPE string.
     CLASS-DATA cntr_type TYPE string.
+    DATA sales_org TYPE string.
 
 ENDCLASS.
 
@@ -63,6 +69,8 @@ CLASS zcl_01_contract_oo IMPLEMENTATION.
     ELSE.
       cv_process = 'NOT STARTED'.
     ENDIF.
+
+    company = 'Walmart USA'.
 
   ENDMETHOD.
 
@@ -99,6 +107,19 @@ CLASS zcl_01_contract_oo IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD set_address.
+
+  ENDMETHOD.
+
+  METHOD set_sales_org.
+
+    me->sales_org = sales_org.
+    me->set_address( it_address = VALUE #( ( country = 'ES' ) ) ).
+
+  ENDMETHOD.
+
+  METHOD get_sales_org.
+
+    sales_org = me->sales_org.
 
   ENDMETHOD.
 
