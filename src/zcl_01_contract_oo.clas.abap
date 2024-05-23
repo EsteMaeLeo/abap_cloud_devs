@@ -25,9 +25,9 @@ CLASS zcl_01_contract_oo DEFINITION
     DATA region TYPE string.
 
     METHODS set_client IMPORTING VALUE(iv_client)   TYPE string
-                                 VALUE(iv_location) TYPE string
+                                 VALUE(iv_location) TYPE string OPTIONAL
                        EXPORTING VALUE(ev_status)   TYPE string
-                       CHANGING  VALUE(cv_process)  TYPE string.
+                       CHANGING  VALUE(cv_process)  TYPE string OPTIONAL.
 
     METHODS get_client EXPORTING ev_client TYPE string.
 
@@ -57,7 +57,12 @@ CLASS zcl_01_contract_oo IMPLEMENTATION.
 
     client = iv_client.
     ev_status = 'OK'.
-    cv_process = 'STARTED'.
+
+    IF iv_location IS SUPPLIED.
+      cv_process = 'STARTED'.
+    ELSE.
+      cv_process = 'NOT STARTED'.
+    ENDIF.
 
   ENDMETHOD.
 
