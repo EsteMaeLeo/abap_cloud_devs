@@ -87,5 +87,14 @@ CLASS zcl_01_exec_abapoo IMPLEMENTATION.
 
     out->write( zcl_01_contract_oo=>company ).
 
+    "INHERITING
+    out->write( |--inheritance--| ).
+
+    DATA(lo_company)          = NEW zcl_04_company_lm01(  ).
+    DATA(lo_plant)            = NEW zcl_05_plant_lm01(  ).
+    DATA(lo_storate_location) = NEW zcl_06_storage_lm01(  ).
+
+
+
   ENDMETHOD.
 ENDCLASS.
