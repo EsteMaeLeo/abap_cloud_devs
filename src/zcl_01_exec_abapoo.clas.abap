@@ -94,6 +94,29 @@ CLASS zcl_01_exec_abapoo IMPLEMENTATION.
     DATA(lo_plant)            = NEW zcl_05_plant_lm01(  ).
     DATA(lo_storate_location) = NEW zcl_06_storage_lm01(  ).
 
+    lo_company->set_company_code( '0001' ).
+    lo_company->set_currency( 'USD' ).
+
+    lo_company->get_company_code(  IMPORTING   ev_company_code = DATA(lv_company_code) ).
+    lo_company->get_currency(  IMPORTING   ev_currency = DATA(lv_currency) ).
+
+    out->write( |Company-{ lv_company_code }-{ lv_currency }| ).
+
+    lo_plant->set_company_code( '0020' ).
+    lo_plant->set_currency( 'EUR' ).
+
+    lo_plant->get_company_code(  IMPORTING   ev_company_code = lv_company_code ).
+    lo_plant->get_currency(  IMPORTING   ev_currency = lv_currency ).
+
+    out->write( |Plant-{ lv_company_code }-{ lv_currency }| ).
+
+    lo_storate_location->set_company_code( '0030' ).
+    lo_storate_location->set_currency( 'MXN' ).
+
+    lo_storate_location->get_company_code(  IMPORTING   ev_company_code = lv_company_code ).
+    lo_storate_location->get_currency(  IMPORTING   ev_currency = lv_currency ).
+
+    out->write( |Storage Location-{ lv_company_code }-{ lv_currency }| ).
 
 
   ENDMETHOD.

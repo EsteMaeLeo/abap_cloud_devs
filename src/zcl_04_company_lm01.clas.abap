@@ -21,7 +21,9 @@ ENDCLASS.
 
 CLASS zcl_04_company_lm01 IMPLEMENTATION.
   METHOD get_company_code.
-    ev_company_code = me->currency.
+
+    ev_company_code = me->company_code.
+
   ENDMETHOD.
 
   METHOD get_currency.
