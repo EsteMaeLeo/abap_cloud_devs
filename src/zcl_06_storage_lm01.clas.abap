@@ -1,4 +1,4 @@
-CLASS zcl_06_storage_lm01 DEFINITION INHERITING FROM zcl_04_company_lm01
+CLASS zcl_06_storage_lm01 DEFINITION INHERITING FROM zcl_05_plant_lm01
   PUBLIC
   CREATE PUBLIC .
 

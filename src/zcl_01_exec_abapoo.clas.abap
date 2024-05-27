@@ -90,9 +90,9 @@ CLASS zcl_01_exec_abapoo IMPLEMENTATION.
     "INHERITING
     out->write( |--inheritance--| ).
 
-    DATA(lo_company)          = NEW zcl_04_company_lm01(  ).
-    DATA(lo_plant)            = NEW zcl_05_plant_lm01(  ).
-    DATA(lo_storate_location) = NEW zcl_06_storage_lm01(  ).
+    DATA(lo_company)          = NEW zcl_04_company_lm01( iv_quotation = 'Q1'  ).
+    DATA(lo_plant)            = NEW zcl_05_plant_lm01( iv_quotation = 'Q2' iv_products = 'P2' ).
+    DATA(lo_storate_location) = NEW zcl_06_storage_lm01( iv_quotation = 'Q3' iv_products = 'P3' ).
 
     lo_company->set_company_code( '0001' ).
     lo_company->set_currency( 'USD' ).
