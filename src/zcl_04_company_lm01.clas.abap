@@ -14,12 +14,14 @@ CLASS zcl_04_company_lm01 DEFINITION
 
     DATA quotation TYPE string READ-ONLY.
 
+
   PROTECTED SECTION.
 
     DATA company_code TYPE c LENGTH 4.
     DATA currency TYPE c LENGTH 3.
 
   PRIVATE SECTION.
+  DATA company_atr TYPE string.
 ENDCLASS.
 
 
