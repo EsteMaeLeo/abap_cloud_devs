@@ -1,0 +1,21 @@
+CLASS zcl_09_citizen_lm01 DEFINITION
+  PUBLIC
+  CREATE PRIVATE
+  GLOBAL FRIENDS zcl_10_eu_citizen_lm01.
+
+  PUBLIC SECTION.
+
+    METHODS set_id  FINAL IMPORTING iv_id TYPE i.
+
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS zcl_09_citizen_lm01 IMPLEMENTATION.
+  METHOD set_id.
+    DATA(lo_citizen) = NEW zcl_09_citizen_lm01(  ).
+  ENDMETHOD.
+
+ENDCLASS.

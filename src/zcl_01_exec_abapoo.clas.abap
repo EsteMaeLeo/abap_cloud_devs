@@ -132,5 +132,20 @@ CLASS zcl_01_exec_abapoo IMPLEMENTATION.
     out->write( lo_animal->walk(  ) ).
     out->write( lo_lion->walk(  ) ).
 
+    out->write( | | ).
+    out->write( |--Wide Casting--| ).
+
+    TRY.
+        lo_lion ?= lo_animal.
+      CATCH cx_sy_move_cast_error .
+        out->write( |--Casting Error--| ).
+        RETURN.
+    ENDTRY.
+
+    out->write( lo_animal->walk(  ) ).
+    out->write( lo_lion->walk(  ) ).
+
+    "data(lo_citizen) = new zcl_09_citizen_lm01(  ).
+
   ENDMETHOD.
 ENDCLASS.
