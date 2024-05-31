@@ -1,0 +1,20 @@
+CLASS zcl_07_animall_lm01 DEFINITION
+  PUBLIC
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+
+    METHODS walk RETURNING VALUE(rv_walk) type string.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS zcl_07_animall_lm01 IMPLEMENTATION.
+
+  METHOD walk.
+    rv_walk = 'The animal walks'.
+  ENDMETHOD.
+
+ENDCLASS.

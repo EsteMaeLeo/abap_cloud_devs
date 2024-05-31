@@ -118,6 +118,19 @@ CLASS zcl_01_exec_abapoo IMPLEMENTATION.
 
     out->write( |Storage Location-{ lv_company_code }-{ lv_currency }| ).
 
+    out->write( | | ).
+    out->write( |--Narrowing Casting--| ).
+
+    DATA(lo_animal) = NEW zcl_07_animall_lm01(  ).
+    DATA(lo_lion) = NEW zcl_08_lion_lm01(  ).
+    out->write( lo_animal->walk(  ) ).
+    out->write( lo_lion->walk(  ) ).
+
+    lo_animal = lo_lion.
+    out->write( | | ).
+    out->write( |--After assigning Narrowing Casting--| ).
+    out->write( lo_animal->walk(  ) ).
+    out->write( lo_lion->walk(  ) ).
 
   ENDMETHOD.
 ENDCLASS.
