@@ -15,15 +15,37 @@ CLASS zcl_lab_01_ejec_lm01 IMPLEMENTATION.
 
   METHOD if_oo_adt_classrun~main.
 
+    DATA(lwa_flight) = VALUE /dmo/flight( carrier_id = 'AA'
+                                   connection_id = '0322'
+                                   flight_date = '2025-01-05'
+                                   price = '805.0'
+                                   currency_code = 'USD'
+                                   plane_type_id = '737-800'
+                                   seats_max = '140'
+                                   seats_occupied = '2' ).
+
+    DATA(lo_flight_base) = NEW zcl_lab_15_flight_price_lm01( ).
+
+    lo_flight_base->add_price( iv_flight = lwa_flight ).
+
+    DATA(rv_price) = lo_flight_base->get_price(
+                       iv_carrier = 'AA'
+                       iv_connid  = '0322'
+                     ).
+
+    out->write( rv_price ).
 
 
-    DATA(lo_grid) = NEW zcl_lab_14_grid_lm01( iv_view_type = 'Main View'
-                                              iv_box = 'BOX1' ).
 
-    DATA(lo_system) = NEW zcl_lab_11_system_lm01(  ).
-    DATA(lo_linux) = NEW zcl_lab_12_linux_lm01(  ).
-
-    out->write( lo_linux->get_architecture(  ) ).
+*****************************************************************
+*    DATA(lo_grid) = NEW zcl_lab_14_grid_lm01( iv_view_type = 'Main View'
+*                                              iv_box = 'BOX1' ).
+*
+*    DATA(lo_system) = NEW zcl_lab_11_system_lm01(  ).
+*    DATA(lo_linux) = NEW zcl_lab_12_linux_lm01(  ).
+*
+*    out->write( lo_linux->get_architecture(  ) ).
+*****************************************************************
 *    DATA(lo_age) = NEW zcl_lab_04_person_lm01(  ).
 *
 *    lo_age->set_age( iv_age = 41 ).
