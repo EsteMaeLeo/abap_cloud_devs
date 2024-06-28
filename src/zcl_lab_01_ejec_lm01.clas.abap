@@ -17,7 +17,7 @@ CLASS zcl_lab_01_ejec_lm01 IMPLEMENTATION.
 
     DATA(lwa_flight) = VALUE /dmo/flight( carrier_id = 'AA'
                                    connection_id = '0322'
-                                   flight_date = '2025-01-05'
+                                   flight_date = '20250105'
                                    price = '805.0'
                                    currency_code = 'USD'
                                    plane_type_id = '737-800'
@@ -34,6 +34,28 @@ CLASS zcl_lab_01_ejec_lm01 IMPLEMENTATION.
                      ).
 
     out->write( rv_price ).
+
+    DATA(lo_flight_10) = NEW zcl_lab_16_price_discount_lm01( ).
+
+    lo_flight_10->add_price( iv_flight = lwa_flight ).
+
+    DATA(rv_price_10) = lo_flight_10->get_price(
+                       iv_carrier = 'AA'
+                       iv_connid  = '0322'
+                     ).
+
+    out->write( |10% discount |  && rv_price_10 ).
+
+    DATA(lo_flight_20) = NEW zcl_lab_17_super_discount_lm01( ).
+
+    lo_flight_20->add_price( iv_flight = lwa_flight ).
+
+    DATA(rv_price_20) = lo_flight_20->get_price(
+                       iv_carrier = 'AA'
+                       iv_connid  = '0322'
+                     ).
+
+    out->write( |20% discount |  && rv_price_20 ).
 
 
 
