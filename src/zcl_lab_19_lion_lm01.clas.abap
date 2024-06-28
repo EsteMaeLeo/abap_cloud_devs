@@ -1,14 +1,19 @@
-class ZCL_LAB_19_LION_LM01 definition
-  public
-  final
-  create public .
+CLASS zcl_lab_19_lion_lm01 DEFINITION INHERITING FROM zcl_lab_18_animal_lm01
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
 
-public section.
-protected section.
-private section.
+  PUBLIC SECTION.
+    METHODS walk REDEFINITION.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
 ENDCLASS.
 
 
 
-CLASS ZCL_LAB_19_LION_LM01 IMPLEMENTATION.
+CLASS zcl_lab_19_lion_lm01 IMPLEMENTATION.
+  METHOD walk.
+    rv_walk = |The lion walks|.
+  ENDMETHOD.
+
 ENDCLASS.

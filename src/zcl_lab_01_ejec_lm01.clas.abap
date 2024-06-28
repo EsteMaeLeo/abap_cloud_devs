@@ -15,6 +15,24 @@ CLASS zcl_lab_01_ejec_lm01 IMPLEMENTATION.
 
   METHOD if_oo_adt_classrun~main.
 
+
+    DATA(lo_animal) = NEW zcl_lab_18_animal_lm01(  ).
+    DATA(lo_lion) = NEW zcl_lab_19_lion_lm01(  ).
+
+    lo_animal = lo_lion.
+    out->write( 'Narrow Cast' ).
+    out->write( lo_animal->walk(  ) ).
+
+    TRY.
+        lo_lion ?= lo_animal.
+      CATCH cx_sy_move_cast_error.
+        out->write( 'Casting Error' ).
+        RETURN.
+    ENDTRY.
+
+    out->write( 'Widening Cast' ).
+    out->write( lo_lion->walk(  ) ).
+
     DATA(lwa_flight) = VALUE /dmo/flight( carrier_id = 'AA'
                                    connection_id = '0322'
                                    flight_date = '20250105'
