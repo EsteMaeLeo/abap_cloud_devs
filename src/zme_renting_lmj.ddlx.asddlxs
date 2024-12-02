@@ -27,10 +27,19 @@
         url: ''
     }
 }
-annotate entity z_i_renting_lmj
-    with 
+annotate entity z_i_renting_lmj with
 {
-    @UI.connectedFields: [{hidden:true}]
-    Plate;
-    
+  @UI.facet: [{ id: 'CarDetails', label: 'Car Details', type: #COLLECTION,  position: 10},
+              { id: 'Car', parentId: 'CarDetails', label: 'Details', type: #FIELDGROUP_REFERENCE, targetQualifier: 'CarDetails' } ]
+  @UI.fieldGroup: [{qualifier: 'CarDetails', position: 10  }]
+  Plate;
+  @UI.fieldGroup: [{qualifier: 'CarDetails', position: 20  }]
+  Fuel;
+  @UI.fieldGroup: [{qualifier: 'CarDetails', position: 30  }]
+  Consumption;
+  @UI.fieldGroup: [{qualifier: 'CarDetails', position: 40  }]
+  DateManfacture;
+  @UI.fieldGroup: [{qualifier: 'CarDetails', position: 50  }]
+  Doors;
+  
 }
