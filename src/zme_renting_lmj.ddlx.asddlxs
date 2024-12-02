@@ -1,0 +1,36 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+    typeName: 'Car',
+    typeNamePlural: 'Cars',
+    typeImageUrl: '',
+    imageUrl: 'ImageCar',
+    title: {
+        type: #STANDARD,
+        label: '',
+        iconUrl: '',
+        criticality: '',
+        criticalityRepresentation: #WITHOUT_ICON,
+        value: 'Brand',
+        valueQualifier: '',
+        targetElement: '',
+        url: ''
+    },
+    description: {
+        type: #STANDARD,
+        label: '',
+        iconUrl: '',
+        criticality: '',
+        criticalityRepresentation: #WITHOUT_ICON,
+        value: 'Model',
+        valueQualifier: '',
+        targetElement: '',
+        url: ''
+    }
+}
+annotate entity z_i_renting_lmj
+    with 
+{
+    @UI.connectedFields: [{hidden:true}]
+    Plate;
+    
+}
