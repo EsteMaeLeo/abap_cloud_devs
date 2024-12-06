@@ -1,0 +1,12 @@
+@Metadata.layer: #CORE
+annotate entity z_b_det_cust_lmj with
+{
+  @UI.lineItem: [{ position: 10, importance:  #HIGH }]
+  Name;
+  @UI.lineItem: [{ position: 20, importance:  #HIGH }]
+  LastName;
+  @UI.lineItem: [{ position: 30, importance:  #HIGH, label: 'Email'}]
+  Email;
+  @UI.lineItem: [{ position: 40, importance:  #HIGH, label: 'Contract Type' }]
+  TypeContract;
+}

@@ -30,9 +30,31 @@
 annotate entity z_i_renting_lmj with
 {
   @UI.facet: [{ id: 'CarDetails', label: 'Car Details', type: #COLLECTION,  position: 10},
-              { id: 'Car', parentId: 'CarDetails', label: 'Details', type: #FIELDGROUP_REFERENCE, targetQualifier: 'CarDetails' } ]
+              { id: 'Car', parentId: 'CarDetails', label: 'Details', type: #FIELDGROUP_REFERENCE,
+              targetQualifier: 'CarDetails', position: 10},
+              { id: 'Client', label: 'Clients',  type:#LINEITEM_REFERENCE, targetElement: '_DetCustomer', position: 20 } ]
   @UI.fieldGroup: [{qualifier: 'CarDetails', position: 10  }]
   Plate;
+
+  @UI.lineItem: [{ position: 10, importance:  #HIGH }]
+  Brand;
+  @UI.lineItem: [{ position: 20, importance:  #HIGH }]
+  Model;
+  @UI.lineItem: [{ position: 30, importance:  #MEDIUM }]
+  Color;
+  @UI.lineItem: [{ position: 40, importance:  #LOW }]
+  Engine;
+  @UI.lineItem: [{ position: 50, importance:  #LOW }]
+  Power;
+  @UI.lineItem: [{ position: 60, importance:  #HIGH }]
+  Price;
+  @UI.lineItem: [{ position: 70, importance:  #HIGH }]
+  Currency;
+  @UI.lineItem: [{ position: 80, importance:  #HIGH }]
+  Rent;
+  @UI.lineItem: [{ position: 90, importance:  #HIGH, label: 'Remaining Time ' }]
+  RentTime;
+
   @UI.fieldGroup: [{qualifier: 'CarDetails', position: 20  }]
   Fuel;
   @UI.fieldGroup: [{qualifier: 'CarDetails', position: 30  }]
@@ -41,5 +63,5 @@ annotate entity z_i_renting_lmj with
   DateManfacture;
   @UI.fieldGroup: [{qualifier: 'CarDetails', position: 50  }]
   Doors;
-  
+
 }
