@@ -36,7 +36,8 @@ annotate entity z_i_renting_lmj with
   @UI.fieldGroup: [{qualifier: 'CarDetails', position: 10  }]
   Plate;
 
-  @UI.lineItem: [{ position: 10, importance:  #HIGH }]
+  @UI: { lineItem: [{ position: 10, importance:  #HIGH }],
+         selectionField: [{ position: 10 }] }
   Brand;
   @UI.lineItem: [{ position: 20, importance:  #HIGH }]
   Model;
@@ -46,14 +47,18 @@ annotate entity z_i_renting_lmj with
   Engine;
   @UI.lineItem: [{ position: 50, importance:  #LOW }]
   Power;
-  @UI.lineItem: [{ position: 60, importance:  #HIGH }]
+
+  @UI: { lineItem: [{ position: 60, importance:  #HIGH }],
+        selectionField: [{ position: 10 }] }
   Price;
   @UI.lineItem: [{ position: 70, importance:  #HIGH }]
   Currency;
   @UI.lineItem: [{ position: 80, importance:  #HIGH }]
   Rent;
-  @UI.lineItem: [{ position: 90, importance:  #HIGH, label: 'Remaining Time ' }]
-  RentTime;
+  // @UI.lineItem: [{ position: 80, importance: '#HIGH, label: 'Rent Time, criticality: 'RentTime' }]
+  // RentTime;
+  @UI.lineItem: [{ position: 80, importance:  #HIGH, label: 'Status', criticality: 'RentTime' }]
+  Status;
 
   @UI.fieldGroup: [{qualifier: 'CarDetails', position: 20  }]
   Fuel;
