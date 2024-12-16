@@ -27,6 +27,7 @@
         url: ''
     }
 }
+@Search.searchable: true
 annotate entity z_i_renting_lmj with
 {
   @UI.facet: [{ id: 'CarDetails', label: 'Car Details', type: #COLLECTION,  position: 10},
@@ -40,8 +41,18 @@ annotate entity z_i_renting_lmj with
          selectionField: [{ position: 10 }] }
   Brand;
   @UI.lineItem: [{ position: 20, importance:  #HIGH }]
+  @Search: {
+  defaultSearchElement: true,
+  ranking: #MEDIUM,
+  fuzzinessThreshold: 0.8
+}
   Model;
   @UI.lineItem: [{ position: 30, importance:  #MEDIUM }]
+  @Search: {
+      defaultSearchElement: true,
+      ranking: #MEDIUM,
+      fuzzinessThreshold: 0.8
+  }
   Color;
   @UI.lineItem: [{ position: 40, importance:  #LOW }]
   Engine;

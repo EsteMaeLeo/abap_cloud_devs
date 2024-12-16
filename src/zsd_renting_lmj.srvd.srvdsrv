@@ -1,0 +1,5 @@
+@EndUserText.label: 'Renting Service Definition'
+define service Zsd_renting_lmj {
+  expose z_i_renting_lmj  as Cars;
+  expose z_b_det_cust_lmj as Customers;
+}
