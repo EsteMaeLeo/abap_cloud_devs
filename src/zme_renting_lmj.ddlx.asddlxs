@@ -39,13 +39,15 @@ annotate entity z_i_renting_lmj with
 
   @UI: { lineItem: [{ position: 10, importance:  #HIGH }],
          selectionField: [{ position: 10 }] }
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'z_b_brands_lmj', element: 'Brand'} }]
+
   Brand;
   @UI.lineItem: [{ position: 20, importance:  #HIGH }]
   @Search: {
   defaultSearchElement: true,
   ranking: #MEDIUM,
   fuzzinessThreshold: 0.8
-}
+  }
   Model;
   @UI.lineItem: [{ position: 30, importance:  #MEDIUM }]
   @Search: {

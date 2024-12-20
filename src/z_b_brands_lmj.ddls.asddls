@@ -8,5 +8,6 @@ define view z_b_brands_lmj
   as select from zrent_brands_lmj
 {
   key brand as Brand,
+  @UI.hidden: true
       url   as ImageCar
 }
